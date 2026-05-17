@@ -45,17 +45,31 @@ function renderSummary() {
 
 async function handlePay(formData) {
   const btn = document.getElementById("pay-btn");
-  const sub = Komaura.Cart.total();
-  const ship = sub >= 1499 ? 0 : 99;
-  const total = sub + ship;
-  if (total <= 0) { Komaura.toast("Your bag is empty"); return; }
+  if (!Komaura.State.cart.length) { Komaura.toast("Your bag is empty"); return; }
 
   btn.disabled = true;
-  btn.textContent = "Loading payment…";
+  btn.textContent = "Securing order…";
+
+  let order;
+  try {
+    const res = await fetch('/api/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: Komaura.State.cart })
+    });
+    order = await res.json();
+    if (!order.id) throw new Error("Order failed");
+  } catch (e) {
+    Komaura.toast("Couldn't secure order. Try again.");
+    btn.disabled = false;
+    btn.textContent = "Pay now";
+    return;
+  }
 
   const options = {
     key: RAZORPAY_KEY,
-    amount: total * 100, 
+    amount: order.amount,
+    order_id: order.id,
     currency: "INR",
     name: "Komaura Beauty",
     description: "Handcrafted soft gel press-ons",
@@ -72,13 +86,27 @@ async function handlePay(formData) {
       color: "#C9847A",
       backdrop_color: "#2A1F1F"
     },
-    config: {
-      display: {
-        hide: [{ method: 'paylater' }, { method: 'emi' }],
-        preferences: { show_default_blocks: true }
+    handler: async function (response) {
+      btn.textContent = "Verifying…";
+      
+      const verifyRes = await fetch('/api/verify-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          order_id: order.id,
+          payment_id: response.razorpay_payment_id,
+          signature: response.razorpay_signature
+        })
+      });
+
+      const verification = await verifyRes.json();
+      if (verification.status !== 'ok') {
+        Komaura.toast("Verification failed. Contact support.");
+        btn.disabled = false;
+        btn.textContent = "Pay now";
+        return;
       }
-    },
-    handler: function (response) {
+
       // success — clear cart and show confirmation
       console.log("payment success", response);
       Komaura.State.cart.length = 0;
