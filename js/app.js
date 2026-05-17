@@ -322,13 +322,12 @@ function initAccordion(scope = document) {
 // ============================================
 function navHTML(active = "") {
   const a = (h, l) => `<a href="${h}" ${active === h ? 'class="active"' : ""}>${l}</a>`;
+  const isA = (h) => (active === h || (active === "" && h === "index.html")) ? "active" : "";
+
   return `
   <nav class="nav">
     <div class="nav-inner">
       <div class="nav-left">
-        <button class="icon-btn menu-btn" data-menu-open aria-label="Open menu">
-          <svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
-        </button>
         <div class="nav-links">
           ${a("shop.html", "Shop")}
           ${a("about.html", "Story")}
@@ -353,27 +352,29 @@ function navHTML(active = "") {
     </div>
   </nav>
 
-  <div class="mobile-menu" aria-hidden="true">
-    <div class="mm-head">
-      <a href="index.html" class="logo">Komaura <span>Beauty</span></a>
-      <button class="icon-btn" data-menu-close aria-label="Close menu">
-        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-      </button>
-    </div>
-    <div class="mm-links">
-      <a href="index.html">Home</a>
-      <a href="shop.html">Shop</a>
-      <a href="about.html">Our story</a>
-      <div class="secondary-links">
-        <a href="faq.html">FAQ</a>
-        <a href="contact.html">Contact</a>
-        <a href="checkout.html">Checkout</a>
-      </div>
-    </div>
-    <div class="mm-foot">
-      <span class="script">handcrafted in Jodhpur</span>
-      <p>Soft gel press-ons. Made slow, made beautiful.</p>
-    </div>
+  <div class="mobile-bottom-nav">
+    <a href="index.html" class="mbn-item ${isA("index.html")}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V9.5z"/></svg>
+      <span>Home</span>
+    </a>
+    <a href="shop.html" class="mbn-item ${isA("shop.html")}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+      <span>Shop</span>
+    </a>
+    <button class="mbn-item" data-search-open>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <span>Search</span>
+    </button>
+    <a href="shop.html" class="mbn-item" onclick="event.preventDefault();window.location='shop.html'">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8C19 16.5 12 21 12 21z"/></svg>
+      <span class="badge" data-wish-count></span>
+      <span>Wishlist</span>
+    </a>
+    <button class="mbn-item" data-cart-open>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 7h12l-1.4 11.2a2 2 0 0 1-2 1.8H9.4a2 2 0 0 1-2-1.8L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg>
+      <span class="badge" data-cart-count></span>
+      <span>Bag</span>
+    </button>
   </div>
 
   <div class="search-overlay" aria-hidden="true">
