@@ -176,7 +176,7 @@ section { padding: 56px 0; }
 
 /* Responsive adjustments */
 @media (max-width: 767px) {
-  body { padding-top: var(--nav-h); padding-bottom: 110px; }
+  body { padding-top: var(--nav-h); padding-bottom: 80px; }
   .nav { display: block; border-bottom-color: rgba(42, 31, 31, 0.05); }
   .nav-left, .nav-actions { display: none; }
   .nav-inner { display: flex; justify-content: center; align-items: center; }
@@ -188,17 +188,17 @@ section { padding: 56px 0; }
   .mobile-bottom-nav { display: none; }
 }
 
+/* Safe area support for notchless iPhones */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .mobile-bottom-nav { bottom: calc(24px + env(safe-area-inset-bottom)); }
+}
+
 /* Entrance animation */
 @keyframes nav-slide-up {
   from { transform: translate(-50%, 100%); opacity: 0; }
   to { transform: translate(-50%, 0); opacity: 1; }
 }
 .mobile-bottom-nav { animation: nav-slide-up 0.8s var(--ease) forwards; }
-
-/* Safe area support for notchless iPhones */
-@supports (padding-bottom: env(safe-area-inset-bottom)) {
-  .mobile-bottom-nav { margin-bottom: env(safe-area-inset-bottom); }
-}
 
 .badge:empty, .badge[data-count="0"] { display: none; }
 
@@ -598,15 +598,22 @@ body.lock { overflow: hidden; }
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.2);
   z-index: 1010;
-  transition: transform var(--dur) var(--ease);
+  transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  animation: wa-glow 3s ease-in-out infinite;
 }
 .wa-float:hover { transform: scale(1.1); }
 .wa-float svg { width: 40px; height: 40px; fill: currentColor; }
+
+@keyframes wa-glow {
+  0%, 100% { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.2); }
+  50% { box-shadow: 0 0 25px rgba(37, 211, 102, 0.5); }
+}
+
 @media (max-width: 899px) {
   .wa-float { 
-    bottom: calc(108px + var(--safe-bottom)); 
+    bottom: calc(104px + var(--safe-bottom)); 
     right: 16px;
     width: 56px;
     height: 56px;
