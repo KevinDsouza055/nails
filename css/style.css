@@ -321,11 +321,12 @@ body.lock { overflow: hidden; }
 .card:hover .card-media img.alt { opacity: 1; }
 .card:hover .card-media img.main { transform: scale(1.04); }
 
-.card-tag { position: absolute; top: 10px; left: 10px; background: var(--cream); color: var(--ink); font-size: 10px; padding: 5px 10px; border-radius: 999px; letter-spacing: 0.1em; text-transform: uppercase; }
+.card-tag { position: absolute; top: 10px; left: 10px; background: var(--cream); color: var(--ink); font-size: 10px; padding: 5px 10px; border-radius: 999px; letter-spacing: 0.1em; text-transform: uppercase; z-index: 2; }
 
-.card-wish { position: absolute; top: 10px; right: 10px; width: 36px; height: 36px; border-radius: 50%; background: rgba(250, 247, 244, 0.9); display: inline-flex; align-items: center; justify-content: center; transition: background var(--dur) var(--ease); }
+.card-wish { position: absolute; top: 10px; right: 10px; width: 36px; height: 36px; border-radius: 50%; background: rgba(250, 247, 244, 0.9); display: inline-flex; align-items: center; justify-content: center; transition: background var(--dur) var(--ease); z-index: 10; }
 .card-wish svg { width: 16px; height: 16px; stroke: var(--ink); fill: none; stroke-width: 1.5; transition: fill var(--dur) var(--ease); }
-.card-wish.active svg { fill: var(--rose); stroke: var(--rose); }
+.card-wish.active svg,
+.icon-btn.active svg { fill: #ef4444; stroke: #ef4444; }
 
 .card-quick { position: absolute; left: 10px; right: 10px; bottom: 10px; opacity: 0; transform: translateY(8px); transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
 .card:hover .card-quick { opacity: 1; transform: translateY(0); }
@@ -572,10 +573,21 @@ body.lock { overflow: hidden; }
 /* ============================================
    TOAST
    ============================================ */
-.toast-wrap { position: fixed; left: 50%; bottom: calc(20px + var(--safe-bottom)); transform: translateX(-50%); z-index: 200; display: flex; flex-direction: column; gap: 8px; align-items: center; pointer-events: none; }
-.toast { background: var(--ink); color: var(--cream); padding: 12px 18px; border-radius: 999px; font-size: 13px; box-shadow: var(--shadow-lg);
-  opacity: 0; transform: translateY(20px); transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); pointer-events: auto; max-width: 90vw; }
+.toast-wrap { 
+  position: fixed; left: 50%; bottom: 40px; transform: translateX(-50%); 
+  z-index: 2000; display: flex; flex-direction: column; gap: 8px; align-items: center; pointer-events: none; 
+}
+.toast { 
+  background: rgba(42, 31, 31, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  color: var(--white); padding: 10px 20px; border-radius: 999px; font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.1em; box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  opacity: 0; transform: translateY(20px); transition: all 0.5s var(--ease); pointer-events: auto; max-width: 90vw; 
+}
 .toast.show { opacity: 1; transform: translateY(0); }
+@media (max-width: 767px) {
+  .toast-wrap { bottom: auto; top: 24px; }
+  .toast { transform: translateY(-20px); }
+}
 
 /* ============================================
    FADE-UP REVEAL

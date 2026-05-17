@@ -3,7 +3,7 @@
 // ============================================
 
 const INR = (n) => "₹" + Number(n).toLocaleString("en-IN");
-const WA_NUMBER = "919876543210"; // Your WhatsApp number with country code
+const WA_NUMBER = "917900187209"; // Your WhatsApp number with country code
 
 const Storage = {
   get(key, fallback) {
@@ -206,7 +206,7 @@ document.addEventListener("click", (e) => {
   const add = e.target.closest("[data-add]");
   if (add) { e.preventDefault(); Cart.add(add.dataset.add); return; }
   const wish = e.target.closest("[data-wish]");
-  if (wish) { e.preventDefault(); Wish.toggle(wish.dataset.wish); return; }
+  if (wish) { e.preventDefault(); e.stopPropagation(); Wish.toggle(wish.dataset.wish); return; }
   const inc = e.target.closest("[data-qty-inc]");
   if (inc) {
     const item = State.cart.find(i => i.id === inc.dataset.qtyInc);
@@ -437,7 +437,7 @@ function footerHTML() {
           <h4>Studio</h4>
           <a href="about.html">Our story</a>
           <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
-          <a href="mailto:hello@komaura.com">hello@komaura.com</a>
+          <a href="mailto:growsites1512@gmail.com">growsites1512@gmail.com</a>
           <a href="#">Jodhpur, India</a>
         </div>
       </div>

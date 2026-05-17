@@ -34,7 +34,7 @@ import "./app.js";
           </div>
           <button class="btn btn-primary" id="add-btn" style="flex:1">Add to bag — ${Komaura.INR(p.price)}</button>
           <button class="icon-btn ${Komaura.Wish.has(p.id)?'active':''}" data-wish="${p.id}" aria-label="Wishlist" style="border:1px solid rgba(42,31,31,.16)">
-            <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8C19 16.5 12 21 12 21z" fill="${Komaura.Wish.has(p.id)?'var(--rose)':'none'}" stroke="currentColor" stroke-width="1.5"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8C19 16.5 12 21 12 21z"/></svg>
           </button>
         </div>
         <div class="acc">
