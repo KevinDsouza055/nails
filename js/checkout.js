@@ -61,8 +61,13 @@ async function handlePay(formData) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ items: Komaura.State.cart })
     });
+    if (!response.ok) throw new Error("Server responded with error");
+    
     const data = await response.json();
-    order_id = data.id;
+    order_id = data.id; 
+    
+    if (!order_id) throw new Error("No order ID returned");
+
   } catch (err) {
     console.error("Order creation failed", err);
     Komaura.toast("Secure connection failed. Please try again.");
@@ -73,7 +78,7 @@ async function handlePay(formData) {
 
   const options = {
     key: RAZORPAY_KEY,
-    amount: total * 100, // This is now just a backup; Razorpay uses the order_id amount
+    amount: total * 100, 
     order_id: order_id, 
     currency: "INR",
     name: "Komaura Beauty",
@@ -94,11 +99,20 @@ async function handlePay(formData) {
       Komaura.State.cart.length = 0;
       localStorage.setItem("k_cart", "[]");
       Komaura.Cart.updateBadge();
+      
+      // Hide the WhatsApp float on success for a cleaner look
+      const wa = document.getElementById("global-wa");
+      if (wa) wa.style.display = "none";
+
       document.querySelector(".checkout-grid").innerHTML = `
         <div style="grid-column:1/-1;text-align:center;padding:60px 20px">
           <span class="script" style="font-size:42px;color:var(--rose)">thank you</span>
           <h2 style="margin:8px 0 12px">Your order is confirmed</h2>
-          <p style="color:var(--mauve);max-width:480px;margin:0 auto">Payment ID: <code>${response.razorpay_payment_id}</code><br/>We'll email tracking details to ${formData.email} within 24 hours.</p>
+          <p style="color:var(--mauve);max-width:480px;margin:0 auto;line-height:1.8">
+            Payment Reference: <code>${response.razorpay_payment_id}</code><br/>
+            Order Reference: <code>${response.razorpay_order_id}</code><br/>
+            We'll email tracking details to ${formData.email} shortly.
+          </p>
           <a href="shop.html" class="btn btn-primary" style="margin-top:24px">Continue shopping</a>
         </div>`;
     },
