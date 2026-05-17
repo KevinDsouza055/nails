@@ -92,7 +92,16 @@ async function handlePay(formData) {
     notes: {
       address: `${formData.address}, ${formData.city}, ${formData.state} ${formData.pin}`
     },
-    theme: { color: "#C9847A" },
+    theme: { 
+      color: "#C9847A",
+      backdrop_color: "#2A1F1F"
+    },
+    config: {
+      display: {
+        hide: [{ method: 'paylater' }, { method: 'emi' }],
+        preferences: { show_default_blocks: true }
+      }
+    },
     handler: function (response) {
       // success — clear cart and show confirmation
       console.log("payment success", response);

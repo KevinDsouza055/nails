@@ -462,13 +462,20 @@ body.lock { overflow: hidden; }
 .gallery-thumbs button.active { opacity: 1; outline: 1px solid var(--ink); outline-offset: 2px; }
 .gallery-thumbs img { width: 100%; height: 100%; object-fit: cover; }
 
+.pdp-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
 .pdp-info .eyebrow { margin-bottom: 8px; }
-.pdp-info h1 { font-size: clamp(2rem, 7vw, 3rem); margin-bottom: 8px; }
-.pdp-info .tagline { color: var(--mauve); margin-bottom: 16px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; }
-.pdp-price { font-size: 24px; font-family: var(--font-display); margin-bottom: 24px; }
+.pdp-info h1 { font-size: clamp(2rem, 7vw, 3.4rem); margin-bottom: 4px; letter-spacing: -0.02em; }
+.pdp-info .tagline { color: var(--mauve); margin-bottom: 12px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.15em; font-weight: 500; }
+.pdp-price { font-size: 26px; font-family: var(--font-display); margin-bottom: 28px; }
 .pdp-price .compare { color: var(--mauve); text-decoration: line-through; font-size: 14px; margin-right: 10px; opacity: 0.6; }
-.pdp-meta { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
-.pdp-meta span { font-size: 11px; padding: 6px 12px; border: 1px solid rgba(42, 31, 31, 0.1); border-radius: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+.pdp-benefits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 32px; padding: 20px 0; border-top: 1px solid rgba(42,31,31,0.06); border-bottom: 1px solid rgba(42,31,31,0.06); }
+.benefit-item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; }
+.benefit-item svg { width: 20px; height: 20px; stroke: var(--rose); stroke-width: 1.5; }
+.benefit-item span { font-size: 9px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; color: var(--ink); }
+
+.pdp-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+.pdp-meta span { font-size: 10px; padding: 5px 10px; background: rgba(42, 31, 31, 0.03); border-radius: 2px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; }
 .pdp-desc { font-size: 15px; color: rgba(42, 31, 31, 0.78); margin-bottom: 24px; }
 
 .pdp-actions { display: flex; gap: 12px; align-items: center; margin-bottom: 24px; }
@@ -504,11 +511,10 @@ body.lock { overflow: hidden; }
   .pdp-actions .qty { width: 100%; justify-content: space-between; order: 2; min-height: 44px; }
   .pdp-actions .qty button { width: 44px; height: 44px; }
   .pdp-actions .btn-primary { order: 1; }
-  .pdp-actions .icon-btn { 
-    position: absolute; top: 20px; right: 20px; 
-    background: var(--white); border: none !important; 
-    box-shadow: var(--shadow-sm); z-index: 10;
-  }
+  .pdp-header .icon-btn { position: static; background: transparent; box-shadow: none; padding: 0; width: 32px; height: 32px; }
+  .pdp-header .icon-btn svg { width: 22px; height: 22px; }
+  .pdp-benefits { grid-template-columns: 1fr; gap: 20px; align-items: flex-start; }
+  .benefit-item { flex-direction: row; text-align: left; }
 }
 
 /* ============================================

@@ -10,6 +10,7 @@ import "./app.js";
 
   const root = document.getElementById("pdp-root");
   root.innerHTML = `
+    <div class="pdp-nav reveal"><a href="shop.html">← Back to collection</a></div>
     <div class="pdp-grid">
       <div>
         <div class="gallery-main"><img id="g-main" src="${p.images[0]}" alt="${p.name}"/></div>
@@ -18,13 +19,36 @@ import "./app.js";
         </div>
       </div>
       <div class="pdp-info">
-        <div class="eyebrow">${p.collection} Collection</div>
-        <h1>${p.name}</h1>
-        <p class="tagline">${p.tagline}</p>
-        <div class="pdp-price">${p.compareAt ? `<span class="compare">${Komaura.INR(p.compareAt)}</span>` : ""}${Komaura.INR(p.price)}</div>
-        <div class="pdp-meta">
-          <span>${p.shape}</span><span>${p.length} length</span><span>★ ${p.rating} (${p.reviews})</span>
+        <div class="pdp-header">
+          <div class="eyebrow">${p.collection} Collection</div>
+          <button class="icon-btn ${Komaura.Wish.has(p.id)?'active':''}" data-wish="${p.id}" aria-label="Wishlist">
+            <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8C19 16.5 12 21 12 21z"/></svg>
+          </button>
         </div>
+        <h1>${p.name}</h1>
+        <div class="tagline">${p.tagline}</div>
+        ${p.stock < 10 ? `<div class="stock-status">Only ${p.stock} limited sets remaining</div>` : ""}
+        <div class="pdp-price">${p.compareAt ? `<span class="compare">${Komaura.INR(p.compareAt)}</span>` : ""}${Komaura.INR(p.price)}</div>
+        
+        <div class="pdp-benefits">
+          <div class="benefit-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Reusable up to 3x</span>
+          </div>
+          <div class="benefit-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span>Hand-painted in Jodhpur</span>
+          </div>
+          <div class="benefit-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12l5 5L20 7"/></svg>
+            <span>Saloon-grade Soft Gel</span>
+          </div>
+        </div>
+
+        <div class="pdp-meta">
+          <span>Shape: ${p.shape}</span><span>Length: ${p.length}</span><span>★ ${p.rating}</span>
+        </div>
+
         <p class="pdp-desc">${p.description}</p>
         <div class="pdp-actions">
           <div class="qty">
@@ -33,9 +57,6 @@ import "./app.js";
             <button id="q-inc" aria-label="Increase">+</button>
           </div>
           <button class="btn btn-primary" id="add-btn" style="flex:1">Add to bag — ${Komaura.INR(p.price)}</button>
-          <button class="icon-btn ${Komaura.Wish.has(p.id)?'active':''}" data-wish="${p.id}" aria-label="Wishlist" style="border:1px solid rgba(42,31,31,.16)">
-            <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8C19 16.5 12 21 12 21z"/></svg>
-          </button>
         </div>
         <div class="acc">
           <div class="acc-item">
