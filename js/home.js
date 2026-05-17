@@ -19,4 +19,5 @@ import "./app.js";
     Komaura.toast("Welcome to the studio ✿");
     e.target.reset();
   });
+  Komaura.injectWA(); // Inject WhatsApp button only on homepage
 })();

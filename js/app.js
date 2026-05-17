@@ -524,7 +524,6 @@ async function boot(activePage) {
   Wish.updateUI();
   initReveal();
   initAccordion();
-  injectWA();
 }
 
 window.Komaura = { State, Cart, Wish, Recent, loadProducts, cardHTML, INR, toast, boot, initReveal, initAccordion, WA_NUMBER };
