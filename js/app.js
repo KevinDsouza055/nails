@@ -325,16 +325,18 @@ function navHTML(active = "") {
   return `
   <nav class="nav">
     <div class="nav-inner">
-      <button class="icon-btn menu-btn" data-menu-open aria-label="Open menu">
-        <svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
-      </button>
-      <a href="index.html" class="logo">Komaura<span>b</span></a>
-      <div class="nav-links">
-        ${a("shop.html", "Shop")}
-        ${a("about.html", "Story")}
-        ${a("faq.html", "FAQ")}
-        ${a("contact.html", "Contact")}
+      <div class="nav-left">
+        <button class="icon-btn menu-btn" data-menu-open aria-label="Open menu">
+          <svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+        </button>
+        <div class="nav-links">
+          ${a("shop.html", "Shop")}
+          ${a("about.html", "Story")}
+          ${a("faq.html", "FAQ")}
+          ${a("contact.html", "Contact")}
+        </div>
       </div>
+      <a href="index.html" class="logo">Komaura <span>Beauty</span></a>
       <div class="nav-actions">
         <button class="icon-btn" data-search-open aria-label="Search">
           <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
@@ -353,7 +355,7 @@ function navHTML(active = "") {
 
   <div class="mobile-menu" aria-hidden="true">
     <div class="mm-head">
-      <a href="index.html" class="logo">Komaura<span>b</span></a>
+      <a href="index.html" class="logo">Komaura <span>Beauty</span></a>
       <button class="icon-btn" data-menu-close aria-label="Close menu">
         <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
       </button>
@@ -401,7 +403,7 @@ function footerHTML() {
     <div class="container">
       <div class="f-grid">
         <div class="f-col f-brand">
-          <div class="logo">Komaura<span>b</span></div>
+          <div class="logo">Komaura <span>Beauty</span></div>
           <p>Soft gel press-on nails, hand-painted in Jodhpur. Slow craft for the modern woman.</p>
         </div>
         <div class="f-col">

@@ -98,11 +98,13 @@ section { padding: 56px 0; }
   background: rgba(250, 247, 244, 0.86); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid transparent; transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease); }
 .nav.scrolled { border-bottom-color: rgba(42, 31, 31, 0.08); }
-.nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; max-width: 1280px; margin: 0 auto; }
+.nav-inner { height: 100%; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 0 20px; max-width: 1280px; margin: 0 auto; }
 @media (min-width: 768px) { .nav-inner { padding: 0 32px; } }
 
-.logo { font-family: var(--font-display); font-size: 22px; letter-spacing: 0.02em; font-weight: 500; }
-.logo span { font-family: var(--font-accent); color: var(--rose); font-size: 18px; margin-left: 2px; }
+.logo { font-family: var(--font-display); font-size: 20px; letter-spacing: 0.05em; font-weight: 500; text-transform: uppercase; white-space: nowrap; }
+.logo span { font-family: var(--font-accent); color: var(--rose); font-size: 24px; margin-left: 4px; text-transform: none; display: inline-block; transform: translateY(2px); }
+
+.nav-left { display: flex; align-items: center; }
 
 .nav-links { display: none; gap: 32px; }
 .nav-links a { font-size: 13px; letter-spacing: 0.06em; position: relative; padding: 6px 0; }
@@ -110,7 +112,7 @@ section { padding: 56px 0; }
 .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
 @media (min-width: 900px) { .nav-links { display: flex; } }
 
-.nav-actions { display: flex; align-items: center; gap: 4px; }
+.nav-actions { display: flex; align-items: center; gap: 4px; justify-content: flex-end; }
 .icon-btn { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; position: relative; transition: background var(--dur) var(--ease); }
 .icon-btn:hover { background: rgba(42, 31, 31, 0.06); }
 .icon-btn svg { width: 20px; height: 20px; stroke: var(--ink); fill: none; stroke-width: 1.5; }
@@ -419,8 +421,35 @@ body.lock { overflow: hidden; }
 .chip.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
 
 .shop-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px; }
-.shop-bar select { padding: 10px 14px; border-radius: 999px; border: 1px solid rgba(42, 31, 31, 0.16); background: var(--cream); font-size: 13px; }
-.shop-bar .count { font-size: 13px; color: var(--mauve); }
+.sort-container { 
+  position: relative; 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(42, 31, 31, 0.08);
+  transition: border-color var(--dur) var(--ease);
+}
+.sort-container:hover { border-bottom-color: var(--ink); }
+.sort-container span { 
+  font-size: 9px; 
+  text-transform: uppercase; 
+  letter-spacing: 0.15em; 
+  color: var(--mauve); 
+  font-weight: 600; 
+}
+.shop-bar select {
+  appearance: none; -webkit-appearance: none;
+  padding-right: 20px; border: none; 
+  border-radius: 0; 
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='none' stroke='%232A1F1F' stroke-width='1.2'%3E%3Cpath d='m2 4 3 3 3-3'/%3E%3C/svg%3E") no-repeat right center;
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; cursor: pointer; color: var(--ink);
+  font-weight: 500;
+  transition: opacity var(--dur) var(--ease);
+}
+.shop-bar select:focus { outline: none; }
+.shop-bar select:hover { opacity: 0.7; }
+.shop-bar .count { font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--mauve); }
 
 /* ============================================
    FAQ / ABOUT / CONTACT
