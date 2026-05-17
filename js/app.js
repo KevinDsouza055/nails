@@ -233,6 +233,20 @@ document.addEventListener("click", (e) => {
     so?.setAttribute("aria-hidden", "false");
     setTimeout(() => so?.querySelector("input")?.focus(), 200);
   }
+
+  if (e.target.closest("[data-menu-open]")) {
+    const mm = document.querySelector(".mobile-menu");
+    mm?.classList.add("open");
+    mm?.setAttribute("aria-hidden", "false");
+    document.body.classList.add("lock");
+  }
+
+  if (e.target.closest("[data-menu-close]")) {
+    const mm = document.querySelector(".mobile-menu");
+    mm?.classList.remove("open");
+    mm?.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("lock");
+  }
 });
 
 // ============================================
@@ -245,26 +259,10 @@ function initUI() {
   onScroll();
 
   const mm = document.querySelector(".mobile-menu");
-  const menuBtn = document.querySelector("[data-menu-open]");
-
-  menuBtn?.addEventListener("click", () => {
-    mm?.classList.add("open");
-    mm?.setAttribute("aria-hidden", "false");
-    document.body.classList.add("lock");
-  });
-
-  document.querySelector("[data-menu-close]")?.addEventListener("click", () => {
-    mm?.classList.remove("open"); 
-    mm?.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("lock");
-    menuBtn?.focus(); // Return focus to trigger to prevent ARIA errors
-  });
-
   mm?.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
     mm.classList.remove("open");
     mm?.setAttribute("aria-hidden", "true");
     document.body.classList.remove("lock");
-    menuBtn?.focus();
   }));
 
   // search
@@ -387,6 +385,33 @@ function navHTML(active = "") {
       <span class="badge" data-cart-count></span>
       <span>Bag</span>
     </button>
+    <button class="mbn-item" data-menu-open>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 8h16M4 16h16" stroke-width="1.5"/></svg>
+      <span>Menu</span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" aria-hidden="true">
+    <div class="mm-head">
+      <div class="logo"><img src="assets/pics/komauralogo.jpg" alt=""/>Komaura <span>Beauty</span></div>
+      <button class="icon-btn" data-menu-close aria-label="Close menu">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      </button>
+    </div>
+    <div class="mm-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop All</a>
+      <a href="wishlist.html">Wishlist</a>
+      <a href="about.html">Our Story</a>
+      <div class="secondary-links">
+        <a href="faq.html">FAQ & Care</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+    </div>
+    <div class="mm-foot">
+      <span class="script">handcrafted in Jodhpur</span>
+      <p>Soft gel press-ons. Made slow, made beautiful.</p>
+    </div>
   </div>
 
   <div class="search-overlay" aria-hidden="true">
