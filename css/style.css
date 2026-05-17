@@ -321,6 +321,9 @@ body.lock { overflow: hidden; }
 .card:hover .card-media img.alt { opacity: 1; }
 .card:hover .card-media img.main { transform: scale(1.04); }
 
+/* View Transition for high-end feel */
+.card-media img { view-transition-name: product-image; }
+
 .card-tag { position: absolute; top: 10px; left: 10px; background: var(--cream); color: var(--ink); font-size: 10px; padding: 5px 10px; border-radius: 999px; letter-spacing: 0.1em; text-transform: uppercase; z-index: 2; }
 
 .card-wish { position: absolute; top: 10px; right: 10px; width: 36px; height: 36px; border-radius: 50%; background: rgba(250, 247, 244, 0.9); display: inline-flex; align-items: center; justify-content: center; transition: background var(--dur) var(--ease); z-index: 10; }
@@ -573,6 +576,13 @@ body.lock { overflow: hidden; }
 /* ============================================
    TOAST
    ============================================ */
+.badge-pulse { animation: badge-pulse 0.4s var(--ease); }
+@keyframes badge-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+
 .toast-wrap { 
   position: fixed; left: 50%; bottom: 40px; transform: translateX(-50%); 
   z-index: 2000; display: flex; flex-direction: column; gap: 8px; align-items: center; pointer-events: none; 

@@ -53,19 +53,28 @@ async function handlePay(formData) {
   btn.disabled = true;
   btn.textContent = "Loading payment…";
 
-  const ok = await loadRazorpay();
-  if (!ok) {
+  let order_id = null;
+  try {
+    // Using a relative path works automatically on Vercel
+    const response = await fetch('/create-order', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ items: Komaura.State.cart })
+    });
+    const data = await response.json();
+    order_id = data.id;
+  } catch (err) {
+    console.error("Order creation failed", err);
+    Komaura.toast("Secure connection failed. Please try again.");
     btn.disabled = false;
     btn.textContent = "Pay now";
-    Komaura.toast("Couldn't load Razorpay. Check your connection.");
     return;
   }
 
-  // NOTE: production usage requires creating an order on your backend
-  // and passing order_id here. Test mode opens checkout directly.
   const options = {
     key: RAZORPAY_KEY,
-    amount: total * 100,
+    amount: total * 100, // This is now just a backup; Razorpay uses the order_id amount
+    order_id: order_id, 
     currency: "INR",
     name: "Komaura Beauty",
     description: "Handcrafted soft gel press-ons",

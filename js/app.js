@@ -57,6 +57,7 @@ const Cart = {
     Storage.set("k_cart", State.cart);
     this.render(); this.updateBadge();
     toast(`${p.name} added to cart`);
+    if ("vibrate" in navigator) navigator.vibrate(10);
   },
   update(productId, qty) {
     const item = State.cart.find(i => i.id === productId);
@@ -79,6 +80,8 @@ const Cart = {
       const c = this.count();
       el.textContent = c; el.dataset.count = c;
       el.style.display = c > 0 ? "inline-flex" : "none";
+      el.classList.add("badge-pulse");
+      setTimeout(() => el.classList.remove("badge-pulse"), 400);
     });
   },
   render() {
@@ -144,6 +147,7 @@ const Wish = {
     else { State.wishlist.push(id); toast("Saved to wishlist"); }
     Storage.set("k_wish", State.wishlist);
     this.updateUI();
+    if ("vibrate" in navigator) navigator.vibrate(10);
   },
   has(id) { return State.wishlist.includes(id); },
   updateUI() {
@@ -181,7 +185,7 @@ function cardHTML(p) {
           <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8C19 16.5 12 21 12 21z"/></svg>
         </button>
         <a href="product.html?id=${p.id}" aria-label="${p.name}">
-          <img class="main" src="${p.images[0]}" alt="${p.name}" loading="lazy"/>
+          <img class="main" src="${p.images[0]}" alt="${p.name}" loading="lazy" style="view-transition-name: p-img-${p.id}"/>
           <img class="alt" src="${p.images[1] || p.images[0]}" alt="" loading="lazy"/>
         </a>
         <div class="card-quick"><button class="btn" data-add="${p.id}">Quick add</button></div>
@@ -286,7 +290,17 @@ function initUI() {
   si?.addEventListener("input", () => {
     const q = si.value.trim().toLowerCase();
     const out = so.querySelector(".search-results");
-    if (!q) { out.innerHTML = ""; return; }
+    if (!q) { 
+      out.innerHTML = `
+        <div class="search-suggest">
+          <p class="eyebrow" style="margin-bottom:12px">Trending Searches</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="chip" onclick="document.querySelector('.search-box input').value='Bridal'; document.querySelector('.search-box input').dispatchEvent(new Event('input'))">Bridal</button>
+            <button class="chip" onclick="document.querySelector('.search-box input').value='Chrome'; document.querySelector('.search-box input').dispatchEvent(new Event('input'))">Chrome</button>
+          </div>
+        </div>`; 
+      return; 
+    }
     const matches = State.products.filter(p =>
       p.name.toLowerCase().includes(q) || p.tagline.toLowerCase().includes(q) || p.collection.toLowerCase().includes(q)
     ).slice(0, 6);

@@ -92,9 +92,27 @@ import "./app.js";
     io.observe(root.querySelector("#add-btn"));
   }
 
-  // SEO
+  // PRIORITY 7: SEO Structured Data
   document.title = `${p.name} — Komaura Beauty`;
   document.querySelector('meta[name="description"]')?.setAttribute("content", p.description);
+
+  const schema = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": p.name,
+    "image": p.images,
+    "description": p.description,
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "INR",
+      "price": p.price,
+      "availability": p.stock > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
+    }
+  };
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.text = JSON.stringify(schema);
+  document.head.appendChild(script);
 
   // Update WhatsApp message with product context
   const waBtn = document.getElementById("global-wa");

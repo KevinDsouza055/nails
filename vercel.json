@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "js/index.js": {
+      "runtime": "@vercel/node"
+    }
+  },
+  "rewrites": [
+    { "source": "/create-order", "destination": "/js/index.js" }
+  ]
+}
