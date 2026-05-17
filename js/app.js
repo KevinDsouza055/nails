@@ -225,6 +225,14 @@ document.addEventListener("click", (e) => {
 
   if (e.target.closest("[data-cart-open]")) { Cart.open(); }
   if (e.target.closest("[data-cart-close]") || e.target.classList.contains("drawer-backdrop")) { Cart.close(); }
+
+  const searchOpen = e.target.closest("[data-search-open]");
+  if (searchOpen) {
+    const so = document.querySelector(".search-overlay");
+    so?.classList.add("open");
+    so?.setAttribute("aria-hidden", "false");
+    setTimeout(() => so?.querySelector("input")?.focus(), 200);
+  }
 });
 
 // ============================================
@@ -261,13 +269,17 @@ function initUI() {
 
   // search
   const so = document.querySelector(".search-overlay");
-  document.querySelector("[data-search-open]")?.addEventListener("click", () => {
-    so?.classList.add("open"); setTimeout(() => so?.querySelector("input")?.focus(), 200);
+  so?.addEventListener("click", (e) => { 
+    if (e.target === so) { 
+      so.classList.remove("open"); 
+      so.setAttribute("aria-hidden", "true");
+    } 
   });
-  so?.addEventListener("click", (e) => { if (e.target === so) { so.classList.remove("open"); } });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
-      so?.classList.remove("open"); Cart.close();
+      so?.classList.remove("open"); 
+      so?.setAttribute("aria-hidden", "true");
+      Cart.close();
       mm?.classList.remove("open"); mm?.setAttribute("aria-hidden", "true"); document.body.classList.remove("lock"); menuBtn?.focus();
     }
   });
@@ -340,7 +352,7 @@ function navHTML(active = "") {
         <button class="icon-btn" data-search-open aria-label="Search">
           <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
         </button>
-        <a href="#" class="icon-btn" aria-label="Wishlist" onclick="event.preventDefault();window.location='shop.html'">
+        <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">
           <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8C19 16.5 12 21 12 21z"/></svg>
           <span class="badge" data-wish-count></span>
         </a>
@@ -365,7 +377,7 @@ function navHTML(active = "") {
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
       <span>Search</span>
     </button>
-    <a href="shop.html" class="mbn-item" onclick="event.preventDefault();window.location='shop.html'">
+    <a href="wishlist.html" class="mbn-item ${isA("wishlist.html")}">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8C19 16.5 12 21 12 21z"/></svg>
       <span class="badge" data-wish-count></span>
       <span>Wishlist</span>

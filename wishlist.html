@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="theme-color" content="#FAF7F4"/>
+<title>Your Wishlist — Komaura Beauty</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=DM+Sans:wght@400;500;600&family=Sacramento&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div id="nav-host"></div>
+
+<main>
+  <section class="page-head">
+    <div class="container">
+      <span class="eyebrow">Saved pieces</span>
+      <h1>Your <span class="script">Wishlist</span></h1>
+      <p id="wishlist-count">Review your carefully selected favorites.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:24px; min-height: 60vh;">
+    <div class="container">
+      <div class="product-grid" id="wishlist-grid"></div>
+      <div id="wishlist-empty" style="display:none; text-align:center; padding: 60px 0;">
+        <p style="color:var(--mauve); margin-bottom: 24px;">You haven't saved any sets yet.</p>
+        <a href="shop.html" class="btn btn-outline">Explore the collection</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="footer-host"></div>
+<script type="module" src="js/wishlist.js"></script>
+</body>
+</html>
