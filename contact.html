@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="theme-color" content="#FAF7F4"/>
+<title>Contact — Komaura Beauty</title>
+<meta name="description" content="Reach the Komaura studio in Jodhpur for orders, custom sets, or press."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=DM+Sans:wght@400;500;600&family=Sacramento&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div id="nav-host"></div>
+
+<main>
+  <section class="page-head">
+    <div class="container">
+      <span class="eyebrow">Get in touch</span>
+      <h1>Say <span class="script">hello.</span></h1>
+      <p>For orders, bridal commissions, press, or simply to send us a sweet word.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:24px">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-card reveal">
+          <h3>Studio</h3>
+          <p style="color:var(--mauve);font-size:14px">Komaura Beauty Studio<br/>Brahmpuri, Jodhpur 342001<br/>Rajasthan, India</p>
+          <p style="margin-top:14px;font-size:14px">📧 <a href="mailto:hello@komaura.com">hello@komaura.com</a></p>
+          <p style="font-size:14px">📱 <a href="tel:+919999999999">+91 99999 99999</a></p>
+          <p style="font-size:14px">🕊 <a href="https://instagram.com" target="_blank" rel="noopener">@komaura.beauty</a></p>
+        </div>
+
+        <div class="contact-card reveal">
+          <h3>Send a note</h3>
+          <form id="contact-form">
+            <div class="field"><label>Name</label><input type="text" name="name" required/></div>
+            <div class="field"><label>Email</label><input type="email" name="email" required/></div>
+            <div class="field"><label>Message</label><textarea name="message" required></textarea></div>
+            <button class="btn btn-primary btn-block" type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="footer-host"></div>
+<script type="module">
+import "./js/app.js";
+window.addEventListener("DOMContentLoaded", async () => {
+  await Komaura.boot("contact.html");
+  document.getElementById("contact-form")?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    Komaura.toast("Thank you — we'll write back within 24 hours ✿");
+    e.target.reset();
+  });
+});
+</script>
+</body>
+</html>

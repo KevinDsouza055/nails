@@ -1,0 +1,154 @@
+[
+  {
+    "id": "rosewood-bloom",
+    "name": "Rosewood Bloom",
+    "tagline": "Hand-painted blush florals",
+    "price": 1299,
+    "compareAt": 1599,
+    "shape": "Almond",
+    "length": "Medium",
+    "collection": "Signature",
+    "rating": 4.9,
+    "reviews": 218,
+    "stock": 12,
+    "images": [
+      "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800&q=80",
+      "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80"
+    ],
+    "description": "A hand-painted soft gel set inspired by Jodhpur's heritage rose gardens. Layered blush florals with a warm chrome finish.",
+    "details": ["24 soft gel tips", "Reusable up to 3 weeks", "Includes glue, prep pad & file", "Hand-painted in Jodhpur"]
+  },
+  {
+    "id": "marble-noir",
+    "name": "Marble Noir",
+    "tagline": "Editorial onyx & gold",
+    "price": 1499,
+    "compareAt": 1799,
+    "shape": "Coffin",
+    "length": "Long",
+    "collection": "Editorial",
+    "rating": 4.8,
+    "reviews": 142,
+    "stock": 8,
+    "images": [
+      "https://images.unsplash.com/photo-1604902396830-aca29e19b067?w=800&q=80",
+      "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=800&q=80"
+    ],
+    "description": "Onyx marble veined with hand-leafed gold. A statement set for the woman who arrives last and leaves first.",
+    "details": ["24 soft gel tips", "Hand-leafed 24k accent", "Reusable up to 3 weeks", "Includes full prep kit"]
+  },
+  {
+    "id": "blush-chrome",
+    "name": "Blush Chrome",
+    "tagline": "Liquid mirror in rose",
+    "price": 1199,
+    "compareAt": null,
+    "shape": "Almond",
+    "length": "Short",
+    "collection": "Signature",
+    "rating": 4.9,
+    "reviews": 304,
+    "stock": 20,
+    "images": [
+      "https://images.unsplash.com/photo-1604654894611-6973b376cbde?w=800&q=80",
+      "https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=800&q=80"
+    ],
+    "description": "Liquid chrome buffed over a soft blush base. Catches every light, every glance.",
+    "details": ["24 soft gel tips", "Mirror chrome finish", "Reusable up to 2 weeks", "Includes glue & file"]
+  },
+  {
+    "id": "ivory-pearl",
+    "name": "Ivory Pearl",
+    "tagline": "Bridal heirloom",
+    "price": 1599,
+    "compareAt": 1899,
+    "shape": "Oval",
+    "length": "Medium",
+    "collection": "Bridal",
+    "rating": 5.0,
+    "reviews": 96,
+    "stock": 6,
+    "images": [
+      "https://images.unsplash.com/photo-1631214540242-c4d7d2b4dd5f?w=800&q=80",
+      "https://images.unsplash.com/photo-1600428877878-1a0fd85beda8?w=800&q=80"
+    ],
+    "description": "Hand-set freshwater pearls on a milky ivory base. Designed for the slow walk down the aisle.",
+    "details": ["24 soft gel tips", "Hand-set freshwater pearls", "Reusable up to 4 weeks", "Velvet keepsake box"]
+  },
+  {
+    "id": "terracotta-sun",
+    "name": "Terracotta Sun",
+    "tagline": "Jodhpur at golden hour",
+    "price": 1099,
+    "compareAt": null,
+    "shape": "Square",
+    "length": "Short",
+    "collection": "Signature",
+    "rating": 4.7,
+    "reviews": 178,
+    "stock": 15,
+    "images": [
+      "https://images.unsplash.com/photo-1599948128020-9a44505b58c4?w=800&q=80",
+      "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80"
+    ],
+    "description": "Warm terracotta wash inspired by sandstone walls of the Blue City at sunset.",
+    "details": ["24 soft gel tips", "Matte velvet finish", "Reusable up to 3 weeks", "Includes prep kit"]
+  },
+  {
+    "id": "champagne-veil",
+    "name": "Champagne Veil",
+    "tagline": "Soft shimmer, soft power",
+    "price": 1349,
+    "compareAt": 1599,
+    "shape": "Almond",
+    "length": "Medium",
+    "collection": "Editorial",
+    "rating": 4.9,
+    "reviews": 251,
+    "stock": 11,
+    "images": [
+      "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80",
+      "https://images.unsplash.com/photo-1632345031435-8727f6897d53?w=800&q=80"
+    ],
+    "description": "A whisper of champagne shimmer on a translucent gel base. Quietly devastating.",
+    "details": ["24 soft gel tips", "Shimmer gel finish", "Reusable up to 3 weeks", "Includes glue & file"]
+  },
+  {
+    "id": "midnight-mauve",
+    "name": "Midnight Mauve",
+    "tagline": "Deep, dusky, decisive",
+    "price": 1199,
+    "compareAt": null,
+    "shape": "Coffin",
+    "length": "Medium",
+    "collection": "Signature",
+    "rating": 4.8,
+    "reviews": 188,
+    "stock": 18,
+    "images": [
+      "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?w=800&q=80",
+      "https://images.unsplash.com/photo-1604902396830-aca29e19b067?w=800&q=80"
+    ],
+    "description": "A dusky mauve with violet undertones. The colour of the sky over Mehrangarh at dusk.",
+    "details": ["24 soft gel tips", "High-gloss finish", "Reusable up to 3 weeks", "Includes prep kit"]
+  },
+  {
+    "id": "henna-heritage",
+    "name": "Henna Heritage",
+    "tagline": "Hand-drawn mehndi motifs",
+    "price": 1699,
+    "compareAt": 1999,
+    "shape": "Almond",
+    "length": "Long",
+    "collection": "Bridal",
+    "rating": 5.0,
+    "reviews": 124,
+    "stock": 5,
+    "images": [
+      "https://images.unsplash.com/photo-1600428877878-1a0fd85beda8?w=800&q=80",
+      "https://images.unsplash.com/photo-1631214540242-c4d7d2b4dd5f?w=800&q=80"
+    ],
+    "description": "Intricate mehndi motifs hand-drawn on a warm ivory base. A modern heirloom.",
+    "details": ["24 soft gel tips", "Hand-drawn detailing", "Reusable up to 4 weeks", "Velvet keepsake box"]
+  }
+]
