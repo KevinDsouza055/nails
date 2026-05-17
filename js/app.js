@@ -335,7 +335,7 @@ function navHTML(active = "") {
           ${a("contact.html", "Contact")}
         </div>
       </div>
-      <a href="index.html" class="logo">Komaura <span>Beauty</span></a>
+      <a href="index.html" class="logo"><img src="assets/pics/komauralogo.jpg" alt=""/>Komaura <span>Beauty</span></a>
       <div class="nav-actions">
         <button class="icon-btn" data-search-open aria-label="Search">
           <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
@@ -404,7 +404,7 @@ function footerHTML() {
     <div class="container">
       <div class="f-grid">
         <div class="f-col f-brand">
-          <div class="logo">Komaura <span>Beauty</span></div>
+          <div class="logo"><img src="assets/pics/komauralogo.jpg" alt=""/>Komaura <span>Beauty</span></div>
           <p>Soft gel press-on nails, hand-painted in Jodhpur. Slow craft for the modern woman.</p>
         </div>
         <div class="f-col">

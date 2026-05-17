@@ -69,7 +69,7 @@ async function handlePay(formData) {
     currency: "INR",
     name: "Komaura Beauty",
     description: "Handcrafted soft gel press-ons",
-    image: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=128",
+    image: "assets/pics/komauralogo.jpg",
     prefill: {
       name: formData.name,
       email: formData.email,
