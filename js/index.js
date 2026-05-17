@@ -14,8 +14,8 @@ const razorpay = new Razorpay({
   key_secret: process.env.RAZORPAY_KEY_SECRET
 });
 
-// Load products to verify prices server-side using process.cwd() for Vercel stability
-const productsPath = path.join(process.cwd(), 'data', 'products.json');
+// Use __dirname to navigate from /js to /data/products.json reliably in serverless environments
+const productsPath = path.join(__dirname, '..', 'data', 'products.json');
 const products = JSON.parse(fs.readFileSync(productsPath, 'utf8'));
 
 app.post('/create-order', async (req, res) => {

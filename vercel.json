@@ -1,7 +1,8 @@
 {
   "functions": {
     "js/index.js": {
-      "runtime": "@vercel/node"
+      "runtime": "@vercel/node",
+      "includeFiles": "data/products.json"
     }
   },
   "rewrites": [
