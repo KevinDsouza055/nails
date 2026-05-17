@@ -95,4 +95,11 @@ import "./app.js";
   // SEO
   document.title = `${p.name} — Komaura Beauty`;
   document.querySelector('meta[name="description"]')?.setAttribute("content", p.description);
+
+  // Update WhatsApp message with product context
+  const waBtn = document.getElementById("global-wa");
+  if (waBtn) {
+    const text = encodeURIComponent(`Hi Komaura! I'm interested in the "${p.name}" set (${p.shape}, ${p.length}). Could you help me with some details?\n\nLink: ${window.location.href}`);
+    waBtn.href = `https://wa.me/${Komaura.WA_NUMBER}?text=${text}`;
+  }
 })();
