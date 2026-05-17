@@ -526,4 +526,4 @@ async function boot(activePage) {
   initAccordion();
 }
 
-window.Komaura = { State, Cart, Wish, Recent, loadProducts, cardHTML, INR, toast, boot, initReveal, initAccordion, WA_NUMBER };
+window.Komaura = { State, Cart, Wish, Recent, loadProducts, cardHTML, INR, toast, boot, initReveal, initAccordion, injectWA, WA_NUMBER };
