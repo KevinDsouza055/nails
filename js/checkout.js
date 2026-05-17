@@ -53,33 +53,9 @@ async function handlePay(formData) {
   btn.disabled = true;
   btn.textContent = "Loading payment…";
 
-  let order_id = null;
-  try {
-    // Using a relative path works automatically on Vercel
-    const response = await fetch('/create-order', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: Komaura.State.cart })
-    });
-    if (!response.ok) throw new Error("Server responded with error");
-    
-    const data = await response.json();
-    order_id = data.id; 
-    
-    if (!order_id) throw new Error("No order ID returned");
-
-  } catch (err) {
-    console.error("Order creation failed", err);
-    Komaura.toast("Secure connection failed. Please try again.");
-    btn.disabled = false;
-    btn.textContent = "Pay now";
-    return;
-  }
-
   const options = {
     key: RAZORPAY_KEY,
     amount: total * 100, 
-    order_id: order_id, 
     currency: "INR",
     name: "Komaura Beauty",
     description: "Handcrafted soft gel press-ons",
