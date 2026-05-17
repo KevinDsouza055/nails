@@ -1,7 +1,7 @@
 // checkout.js — Razorpay test integration
 import "./app.js";
 
-const RAZORPAY_KEY = "rzp_test_1DP5mmOlF5G5ag"; // public test key — replace with your own
+const RAZORPAY_KEY = "rzp_test_SqMLV95BbHrYtR"; // Replace with your actual Key ID from Razorpay Dashboard
 
 function loadRazorpay() {
   return new Promise((resolve) => {
